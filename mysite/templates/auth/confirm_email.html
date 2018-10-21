@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+        <!-- Для работы подставить в value актуальные знеачения из url -->
+        <form action="/rest-auth/registration/verify-email/" method="post">
+            <input type="hidden" name="key" value="NQ:1gABYd:TDqYioP2jI1aLiVOMV_NiJIQjFo">
+            <input type="submit" value="verify-email">
+        </form>
+    {% endblock %}

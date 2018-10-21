@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block content %}{% endblock %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Потом подключить сюда статику -->
+    <script>
+        $('.post-image').on('click', function() {
+            var formData = new FormData(document.getElementById('imageForm'))
+
+            // var imagefile = document.querySelector('#schema');
+            var imagefile = document.querySelector('#price');
+
+            // formData.append("schema", imagefile.files[0]);
+            formData.append("price", imagefile.files[0]);
+
+            axios.post('http://127.0.0.1:8000/prices/', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Token e65232cc2e7295ba7f7086abccd50806e3ee4f0e',
+                }
+            })
+
+            // axios.post('http://127.0.0.1:8000/flats/', formData, {
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data',
+            //         'Authorization': 'Token e65232cc2e7295ba7f7086abccd50806e3ee4f0e',
+            //         // 'Content-Disposition': 'attachment; filename="1.jpg"',
+            //     }
+            // })
+
+            // axios.put('http://127.0.0.1:8000/flats/1/', formData, {
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data',
+            //        'Authorization': 'Token e65232cc2e7295ba7f7086abccd50806e3ee4f0e',
+            //    }
+            // })
+        });
+    </script>
+</body>
+</html>
